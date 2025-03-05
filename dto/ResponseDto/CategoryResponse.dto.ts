@@ -1,13 +1,13 @@
 import { ProductResponse } from "./ProductResponse.dto";
 
-class CategoryResponse {
+export class CategoryResponse {
   id: string;
   name: string;
   slug: string;
   products: ProductResponse[];
   countBrands: number;
 
-  constructor(category) {
+  constructor(category:any) {
       this.id = category._id;
       this.name = category.name;
       this.slug = category.slug;

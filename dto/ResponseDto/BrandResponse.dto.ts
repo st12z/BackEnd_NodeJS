@@ -1,9 +1,9 @@
 import { ProductResponse } from "./ProductResponse.dto";
 
-class BrandResponse {
+export class BrandResponse {
   id: string;
   name: string;
-  productResponseList: any[];
+  productResponseList: ProductResponse[];
   orderStatus: string;
 
   constructor(brand:any) {

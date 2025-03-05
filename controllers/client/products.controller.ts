@@ -8,7 +8,7 @@ import { PageResponse } from "../../dto/ResponseDto/PageResponse.dto";
 import { ResponseError } from "../../dto/ResponseDto/ResponseError.dto";
 export const getAllProducts =async (req:Request,res:Response) => {
   try{
-    const {category,filters,sorts}=req.query;
+    const {category,filter,sort}=req.query;
     const pageNo: number = parseInt(req.query.pageNo as string) || 1;
     let query={};
     // Lọc theo slug category
@@ -20,8 +20,8 @@ export const getAllProducts =async (req:Request,res:Response) => {
     }
     
       // filter
-    if (typeof filters === 'string') {
-      const filtersArr = filters.split(',');
+    if (typeof filter === 'string') {
+      const filtersArr = filter.split(',');
       for(const f of filtersArr){
           const [key, value] = f.split(':');
           if (key === 'brand') {
@@ -49,8 +49,8 @@ export const getAllProducts =async (req:Request,res:Response) => {
     }
     // sorts
     let sortQuery={};
-    if (typeof sorts === 'string') {
-      const sortsArr = sorts.split(',');
+    if (typeof sort === 'string') {
+      const sortsArr = sort.split(',');
       for(const s of sortsArr){
           const [key, value] = s.split(':');
           if (value === 'asc') {
