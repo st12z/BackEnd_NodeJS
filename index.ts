@@ -2,6 +2,7 @@ import express,{Express,Request,Response} from 'express';
 import dotenv from "dotenv";
 import * as database from "./config/database";
 import cors from 'cors'; 
+import apiRoutes from './routes/client/index.route';
 
 dotenv.config(); // lấy thông tin từ file .env
 database.connect(); // Kết nối database
@@ -15,9 +16,7 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true // Cho phép gửi cookie nếu cần
 }));
-app.get("/hello-world", (req: Request, res: Response) => {
-  res.status(200).json({ message: "Hello World" });
-});
+apiRoutes(app);
 app.listen(PORT, () => {
   console.log(`App listening or port ${PORT}`);
 });
